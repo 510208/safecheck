@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>外部網站安全檢查</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <!-- 檢查使用者索引的網站網址 -->
+        <!-- 調用VT API -->
+        <script>
+            $(document).ready(function() {
+                var url = getParameterByName('url');
+                url = normalizeURL(url);
+                $('#site-url').text(url);
+
+                $.ajax({
+                    url: "https://www.virustotal.com/vtapi/v2/url/report",
+                    data: {
+                        resource: url,
+                        apikey: "bd77e454e0c99a6fc1fda1c69f397c374c2c8d5ad2f369e54c0a2a45d6ce03f0"
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                        if (data.positives <= 5) {
+                            $('.securityInfo').text("此網站安全").css("color", "darkgreen");
+                        } else {
+                            $('.securityInfo').text("請注意此網站的安全性").css("color", "red").addClass("flashing");
+                        }
+                        alert("掃描結果：" + JSON.stringify(data));
+                    },
+                    error: function(xhr, status, error) {
+                        var errorMessage = xhr.status + ": " + xhr.statusText;
+                        alert("發生錯誤：" + errorMessage);
+                    }
+                });
+
+                function getParameterByName(name, url) {
+                    if (!url) url = window.location.href;
+                    name = name.replace(/[\[\]]/g, '\\$&');
+                    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                    results = regex.exec(url);
+                    if (!results) return null;
+                    if (!results[2]) return '';
+                    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+                }
+
+                function normalizeURL(url) {
+                    if (!/^https?:\/\//i.test(url)) {
+                        url = "http://" + url;
+                    }
+                    return url;
+                }
+            });
+        </script>
+    </head>
+    <body>
+        <div class="containerSelf">
+            <div class="content">
+                <img src="image/logo.svg" width="200px" height="200px">
+                <h1>您即將訪問以下網站</h1>
+                <p>　　</p>
+                <p id="site-url">調用網站檢查函數失敗，請開發者檢查網站軟體狀況</p>
+                <p class="securityInfo">未找到關於此網站的安全性資料，請開發者檢查網站軟體狀況</p>
+                <p>　　</p>
+                <button id="confirm-button">確認前往</button>
+            </div>
+        </div>
+        <div class="footer">
+            <p>&copy; 2023 510208 PenguinBrother. All rights reserved.</p>
+            <a href="https://storyset.com/online">Online illustrations by Storyset</a>
+        </div>        
+    </body>    
+</html>

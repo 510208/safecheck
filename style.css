@@ -1,0 +1,129 @@
+@font-face {
+    font-family: YaheiConsola;
+    src: url('/font/font.ttf') format('truetype'),
+         url('/font/font.woff') format('woff'),
+         url('/font/font.woff2') format('woff2');
+    /* 添加其他字型格式，以支援不同的瀏覽器 */
+}
+
+body {
+	font-family: YaheiConsola, 'Courier New', monospace;
+	margin: 0;
+	padding: 0;
+}
+
+h1, h2, p {
+	text-align: center;
+}
+
+.warning {
+	color: red;
+	font-weight: bold;
+}
+
+p#site-url {
+	background-color: #636363;
+	padding: 10px;
+	margin: 0;
+	text-align: center;
+	padding-bottom: 10px;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+h1 {
+	text-align: center;
+}
+
+button {
+	display: block;
+	margin: 0 auto;
+	padding: 10px 20px;
+	font-size: 16px;
+	border: none;
+	border-radius: 4px;
+	background-color: #005813;
+	color: #fff;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #1c4b00;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+    background-color: rgb(9, 56, 0);
+    font-family: YaheiConsola, 'Courier New', monospace;
+}
+
+.containerSelf {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	width: 90%;
+	margin: 0 auto;
+}
+
+.content {
+	width: 80%;
+	text-align: center;
+    color: lightgray;
+}
+
+h1, p, button {
+	text-align: center;
+}
+
+h1, p {
+	margin: 0;
+}
+
+button {
+	margin-top: 20px;
+	padding: 10px 20px;
+	font-size: 16px;
+	border: none;
+	border-radius: 4px;
+	background-color: #134200;
+	color: #fff;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #004216;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333333;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    z-index: 9999; /* 確保頁尾在最上層 */
+}
+
+.footer p {
+    margin: 0;
+}
+
+a {
+    color: #6699cc; /* 調整顏色值為您想要的淺藍色 */
+}
+
+@keyframes flashing {
+    0% { color: red; }
+    50% { color: transparent; }
+    100% { color: red; }
+}
+
+.flashing {
+    animation: flashing 1s infinite;
+}
