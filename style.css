@@ -1,8 +1,8 @@
 @font-face {
     font-family: YaheiConsola;
-    src: url('/font/font.ttf') format('truetype'),
-         url('/font/font.woff') format('woff'),
-         url('/font/font.woff2') format('woff2');
+    src: url('font/font.ttf') format('truetype'),
+         url('font/font.woff') format('woff'),
+         url('font/font.woff2') format('woff2');
     /* 添加其他字型格式，以支援不同的瀏覽器 */
 }
 
@@ -10,6 +10,9 @@ body {
 	font-family: YaheiConsola, 'Courier New', monospace;
 	margin: 0;
 	padding: 0;
+	margin: 0;
+	padding: 0;
+    background-color: rgb(9, 56, 0);
 }
 
 h1, h2, p {
@@ -50,14 +53,6 @@ button {
 
 button:hover {
 	background-color: #1c4b00;
-}
-
-body {
-	font-family: Arial, sans-serif;
-	margin: 0;
-	padding: 0;
-    background-color: rgb(9, 56, 0);
-    font-family: YaheiConsola, 'Courier New', monospace;
 }
 
 .containerSelf {
@@ -126,4 +121,29 @@ a {
 
 .flashing {
     animation: flashing 1s infinite;
+}
+
+/* 手機和平板 */
+@media (max-width: 768px) {
+    .content {
+        width: 90%; /* 較小的寬度 */
+    }
+    img {
+        width: 150px; /* 較小的圖片寬度 */
+        height: 150px; /* 較小的圖片高度 */
+    }
+}
+
+/* 桌面 */
+@media (min-width: 769px) {
+    .containerSelf {
+        justify-content: center;
+    }
+    .content {
+        width: 60%; /* 較大的寬度 */
+    }
+    img {
+        width: 200px; /* 較大的圖片寬度 */
+        height: 200px; /* 較大的圖片高度 */
+    }
 }
